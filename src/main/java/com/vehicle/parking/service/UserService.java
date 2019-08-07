@@ -10,4 +10,8 @@ public interface UserService {
 
 	User register(UserDto userDto);
 
+	String sendRequest(int id);
+
+	String releaseSlot(int id, int days);
+
 }

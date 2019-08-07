@@ -1,41 +1,29 @@
 package com.vehicle.parking.entity;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="USER")
-@Getter
+@Table(name="request")
 @Setter
-@AllArgsConstructor
-public class User {
+@Getter
+@NoArgsConstructor
+public class Request {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private String name;
+	private int slotId;
 	
-	private float experience;
-	
-	private String designation;
-	
-	//private LocalDate doj;
-	
-	private Long mobileno;
-	
-	private String address;
-	
-	public User() {
-		
-	}
+	@OneToOne
+	User user;
 }
