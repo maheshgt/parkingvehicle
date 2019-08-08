@@ -49,6 +49,15 @@ public class UserServiceImpl implements UserService{
 		parkingSlotRepo.save(ps);
 		return "your slot released successfully for "+days;
 	}
+
+	@Override
+	public String userLogin(String name) {
+		User user = userRepo.findByName(name);
+		if(user.getName().equalsIgnoreCase(name))
+			return "login successfully";
+		else
+		return "Invalid credentials...";
+	}
 	
 
 }

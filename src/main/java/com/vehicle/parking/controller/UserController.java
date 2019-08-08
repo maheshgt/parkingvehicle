@@ -3,6 +3,7 @@ package com.vehicle.parking.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,6 +25,11 @@ public class UserController {
 	@PostMapping("/registration")
 	public ResponseEntity<User> userRegistration(@RequestBody UserDto userDto){
 		return new ResponseEntity<User>(userService.register(userDto),HttpStatus.OK);
+	}
+	
+	@GetMapping("/login/{name}")
+	public ResponseEntity<String> userLogin(@PathVariable String name){
+		return new ResponseEntity<String>(userService.userLogin(name),HttpStatus.OK);
 	}
 	
 	@PostMapping("/request")

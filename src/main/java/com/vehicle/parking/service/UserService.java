@@ -14,4 +14,6 @@ public interface UserService {
 
 	String releaseSlot(int id, int days);
 
+	String userLogin(String name);
+
 }

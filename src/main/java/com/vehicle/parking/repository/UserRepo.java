@@ -7,5 +7,7 @@ import com.vehicle.parking.entity.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer>{
+
+	public User findByName(String name);
 	
 }
