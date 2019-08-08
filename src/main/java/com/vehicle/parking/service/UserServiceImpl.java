@@ -13,17 +13,17 @@ import com.vehicle.parking.repository.RequestRepo;
 import com.vehicle.parking.repository.UserRepo;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	UserRepo userRepo;
-	
+
 	@Autowired
 	ParkingSlotRepo parkingSlotRepo;
-	
+
 	@Autowired
 	RequestRepo requestRepo;
-	
+
 	@Override
 	public User register(UserDto userDto) {
 		User user = new User();
@@ -33,13 +33,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public String sendRequest(int id) {
-	User u = userRepo.findById(id).get();	
+		User u = userRepo.findById(id).get();
 		Request re = new Request();
 		re.setUser(u);
-		//re.setSlotId(slotId);
 		requestRepo.save(re);
 		return "your request send successfully";
+		/*
+		 * else return "your request not send...try agian";
+		 */
 	}
+
 
 	@Override
 	public String releaseSlot(int id, int days) {
@@ -47,17 +50,16 @@ public class UserServiceImpl implements UserService{
 		ps.setStatus(1);
 		ps.setDays(days);
 		parkingSlotRepo.save(ps);
-		return "your slot released successfully for "+days;
+		return "your slot released successfully";
 	}
 
 	@Override
 	public String userLogin(String name) {
 		User user = userRepo.findByName(name);
-		if(user.getName().equalsIgnoreCase(name))
+		if (user.getName().equalsIgnoreCase(name))
 			return "login successfully";
 		else
-		return "Invalid credentials...";
+			return "Invalid credentials...";
 	}
-	
 
 }

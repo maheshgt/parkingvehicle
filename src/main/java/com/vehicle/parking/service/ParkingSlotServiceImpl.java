@@ -1,6 +1,5 @@
 package com.vehicle.parking.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +66,6 @@ public class ParkingSlotServiceImpl implements ParkingSlotService {
 				i++;
 			}
 		}
-		System.out.println("end"+new Date());
 		return "assign the daily slots successfully";
 	}
 
