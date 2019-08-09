@@ -1,5 +1,7 @@
 package com.vehicle.parking.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,14 @@ import com.vehicle.parking.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	UserService userService;
 	
 	@PostMapping("/registration")
 	public ResponseEntity<User> userRegistration(@RequestBody UserDto userDto){
+		logger.info("it is registration method...");
 		return new ResponseEntity<User>(userService.register(userDto),HttpStatus.OK);
 	}
 	
